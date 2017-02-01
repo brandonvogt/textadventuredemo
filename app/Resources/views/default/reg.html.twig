@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+{% if error != null %}
+    <div>{{ error }}</div>
+{% endif %}
+<div><p>What is your name, wanderer..?</p></div>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<input type="submit" value="Enter" class="hidden" />
+{{ form_end(form) }}
+{% endblock %}

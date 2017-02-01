@@ -1,0 +1,38 @@
+body {
+    background: #000;
+    color: #adff2f;
+    font-family: 'VT323', monospace;
+    background: url('../img/bg.png');
+}
+h1, h2, h3, h4 {margin: .22em 0;}
+input {
+    background: rgba(30,255,0,.1);
+    border: none;
+    color: #adff2f;
+    font-family: 'VT323', monospace;
+}
+label {font-weight: bold}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.2em;
+}
+.hidden {display: none}
+.log0 {color: #67991c}
+.pre {white-space: pre-wrap;
+    font-size: 1.4em;
+    text-align: center;
+    margin: 0 auto;}
+.content-container {
+    margin: 0 10em;
+}
+@media screen and (max-width: 480px) {
+    .pre {
+        font-size: .8em;
+    }
+}
+@media screen and (max-width: 800px) {
+    .content-container {
+        margin: 0;
+    }
+}

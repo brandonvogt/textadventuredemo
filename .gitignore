@@ -97,3 +97,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.htaccess
+app/config/*
+nbproject/*
+web/robots.txt

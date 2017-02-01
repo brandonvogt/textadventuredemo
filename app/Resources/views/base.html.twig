@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Adventure Demo!{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/normalize.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/base.css') }}" />
+        <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet"> 
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        <div class="container">
+            <div class="pre">
+_________ _______          _________
+\__   __/(  ____ \|\     /|\__   __/
+   ) (   | (    \/( \   / )   ) (   
+   | |   | (__     \ (_) /    | |   
+   | |   |  __)     ) _ (     | |   
+   | |   | (       / ( ) \    | |   
+   | |   | (____/\( /   \ )   | |   
+   )_(   (_______/|/     \|   )_(   
+                                    
+ ______   _______  _______  _______ 
+(  __  \ (  ____ \(       )(  ___  )
+| (  \  )| (    \/| () () || (   ) |
+| |   ) || (__    | || || || |   | |
+| |   | ||  __)   | |(_)| || |   | |
+| |   ) || (      | |   | || |   | |
+| (__/  )| (____/\| )   ( || (___) |
+(______/ (_______/|/     \|(_______)
+</div>
+            <div class="content-container">
+            {% block content %} {% endblock %}
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

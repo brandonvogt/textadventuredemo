@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block menu %}
+    <div class="row">
+    <a href="{{path('admin_user_index')}}">Users</a>
+    <a href="{{path('admin_place_index')}}">Places</a>
+    <a href="{{path('admin_interaction_index')}}">Responses</a>
+    <a href="{{path('admin_log_index')}}">Logs</a>
+    </div>
+{% endblock %}

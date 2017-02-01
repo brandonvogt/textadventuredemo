@@ -1,0 +1,49 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block content %}
+    <h1>Interactions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Place_id</th>
+                <th>Input</th>
+                <th>Output</th>
+                <th>Logic_flag</th>
+                <th>Item</th>
+                <th>Update_place</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interaction in interactions %}
+            <tr>
+                <td><a href="{{ path('admin_interaction_show', { 'id': interaction.id }) }}">{{ interaction.id }}</a></td>
+                <td>{{ interaction.placeid }}</td>
+                <td>{{ interaction.input }}</td>
+                <td>{{ interaction.output }}</td>
+                <td>{{ interaction.logicflag }}</td>
+                <td>{{ interaction.item }}</td>
+                <td>{{ interaction.updateplace }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_interaction_show', { 'id': interaction.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_interaction_edit', { 'id': interaction.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_interaction_new') }}">Create a new interaction</a>
+        </li>
+    </ul>
+{% endblock %}

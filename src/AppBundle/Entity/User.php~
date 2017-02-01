@@ -1,0 +1,202 @@
+<?php
+
+namespace AppBundle\Entity;
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="users")
+ * @ORM\HasLifecycleCallbacks
+ */
+class User extends BaseUser
+{
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    /** @ORM\Column(name="place_id", type="text", options={"default":1}) */
+    private $place_id = 1;
+    /** @ORM\Column(type="integer") */
+    private $item1 = 0;
+    /** @ORM\Column(type="integer") */
+    private $item2 = 0;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Log", mappedBy="user")
+     */
+    private $logs;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="users")
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
+     */
+    private $place;
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setInitialPlace()
+    {
+        // Unsure if anything should be here!
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->logs = new \Doctrine\Common\Collections\ArrayCollection();
+       
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return User
+     */
+
+    /**
+     * Set placeId
+     *
+     * @param integer $placeId
+     *
+     * @return User
+     */
+    public function setPlaceId($placeId)
+    {
+        $this->place_id = $placeId;
+
+        return $this;
+    }
+
+    /**
+     * Get placeId
+     *
+     * @return integer
+     */
+    public function getPlaceId()
+    {
+        return $this->place_id;
+    }
+    
+    /**
+     * Add log
+     *
+     * @param \AppBundle\Entity\Log $log
+     *
+     * @return User
+     */
+    public function addLog(\AppBundle\Entity\Log $log)
+    {
+        $this->logs[] = $log;
+
+        return $this;
+    }
+
+    /**
+     * Remove log
+     *
+     * @param \AppBundle\Entity\Log $log
+     */
+    public function removeLog(\AppBundle\Entity\Log $log)
+    {
+        $this->logs->removeElement($log);
+    }
+
+    /**
+     * Get logs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLogs()
+    {
+        return $this->logs;
+    }
+
+    /**
+     * Set place
+     *
+     * @param \AppBundle\Entity\Place $place
+     *
+     * @return User
+     */
+    public function setPlace(\AppBundle\Entity\Place $place = NULL)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return \AppBundle\Entity\Place
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set item1
+     *
+     * @param integer $item1
+     *
+     * @return User
+     */
+    public function setItem1($item1)
+    {
+        $this->item1 = $item1;
+
+        return $this;
+    }
+
+    /**
+     * Get item1
+     *
+     * @return integer
+     */
+    public function getItem1()
+    {
+        return $this->item1;
+    }
+
+    /**
+     * Set item2
+     *
+     * @param integer $item2
+     *
+     * @return User
+     */
+    public function setItem2($item2)
+    {
+        $this->item2 = $item2;
+
+        return $this;
+    }
+
+    /**
+     * Get item2
+     *
+     * @return integer
+     */
+    public function getItem2()
+    {
+        return $this->item2;
+    }
+}

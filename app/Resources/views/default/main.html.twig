@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<script src="{{ asset('js/input.js') }}"></script>
+<script>
+$(document).ready(function(){
+  $( 'form[name="user_input"]' ).submit( function( e ){
+    e.preventDefault();
+ 
+    postForm( $(this), function( response ){
+    });
+  });
+ 
+});
+</script>
+<div>
+{% for log in logData %}
+    <div class="log{{log.io_bit}}">{{ log.text | raw }}</div>
+{% endfor %}
+</div>
+<div id="append_container"></div>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<input type="submit" value="Enter" class="hidden"/>
+{{ form_end(form) }}
+<br><br>
+{% endblock %}

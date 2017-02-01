@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Interaction</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ interaction.id }}</td>
+            </tr>
+            <tr>
+                <th>Place_id</th>
+                <td>{{ interaction.placeid }}</td>
+            </tr>
+            <tr>
+                <th>Input</th>
+                <td>{{ interaction.input }}</td>
+            </tr>
+            <tr>
+                <th>Output</th>
+                <td>{{ interaction.output }}</td>
+            </tr>
+            <tr>
+                <th>Logic_flag</th>
+                <td>{{ interaction.logicflag }}</td>
+            </tr>
+            <tr>
+                <th>Item</th>
+                <td>{{ interaction.item }}</td>
+            </tr>
+            <tr>
+                <th>Update_place</th>
+                <td>{{ interaction.updateplace }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_interaction_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_interaction_edit', { 'id': interaction.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

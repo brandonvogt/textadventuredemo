@@ -1,0 +1,45 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block content %}
+    <h1>Logs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User_id</th>
+                <th>Text</th>
+                <th>Timestamp</th>
+                <th>Io_bit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+            <tr>
+                <td><a href="{{ path('admin_log_show', { 'id': log.id }) }}">{{ log.id }}</a></td>
+                <td>{{ log.userid }}</td>
+                <td>{{ log.text }}</td>
+                <td>{% if log.timestamp %}{{ log.timestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ log.iobit }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_log_show', { 'id': log.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_log_edit', { 'id': log.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_log_new') }}">Create a new log</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block content %}
+    <h1>Places list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Base_desc</th>
+                <th>With_item1</th>
+                <th>With_item2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for place in places %}
+            <tr>
+                <td><a href="{{ path('admin_place_show', { 'id': place.id }) }}">{{ place.id }}</a></td>
+                <td>{{ place.title }}</td>
+                <td>{{ place.basedesc }}</td>
+                <td>{{ place.withitem1 }}</td>
+                <td>{{ place.withitem2 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_place_show', { 'id': place.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_place_edit', { 'id': place.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_place_new') }}">Create a new place</a>
+        </li>
+    </ul>
+{% endblock %}
